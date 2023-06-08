@@ -10,6 +10,7 @@ import (
 	"github.com/Bonteractor/advent-of-code-22/pkg/day1"
 	"github.com/Bonteractor/advent-of-code-22/pkg/day2"
 	"github.com/Bonteractor/advent-of-code-22/pkg/day3"
+	"github.com/Bonteractor/advent-of-code-22/pkg/day4"
 )
 
 func main() {
@@ -61,6 +62,12 @@ func main() {
 		solution = Solution{
 			Part1: day3.SolvePart1(string(input)),
 			Part2: day3.SolvePart2(string(input)),
+		}
+
+	case 4:
+		solution = Solution{
+			Part1: day4.SolvePart1(string(input)),
+			Part2: day4.SolvePart2(string(input)),
 		}
 
 	// Add cases for other days as needed

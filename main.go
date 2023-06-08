@@ -47,7 +47,7 @@ func main() {
 	// Call the appropriate solution function based on the day
 	switch day {
 	case 1:
-		result = day1.SolvePart1(input)
+		result = day1.SolvePart1(string(input))
 		
 	// Add cases for other days as needed
 	default:

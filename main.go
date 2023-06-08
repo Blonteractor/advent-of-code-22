@@ -8,6 +8,7 @@ import (
 	"strconv"
 
 	"github.com/Bonteractor/advent-of-code-22/pkg/day1"
+	"github.com/Bonteractor/advent-of-code-22/pkg/day2"
 )
 
 func main() {
@@ -50,6 +51,11 @@ func main() {
 		solution = Solution {
 			Part1: day1.SolvePart1(string(input)),
 			Part2: day1.SolvePart2(string(input)),
+		}
+	case 2:
+		solution = Solution {
+			Part1: day2.SolvePart1(string(input)),
+			Part2: day2.SolvePart2(string(input)),
 		}
 		
 	// Add cases for other days as needed

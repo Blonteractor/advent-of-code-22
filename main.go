@@ -42,17 +42,25 @@ func main() {
 		log.Fatal(err)
 	}
 	
-	var result int
+	var solution Solution
 	
 	// Call the appropriate solution function based on the day
 	switch day {
 	case 1:
-		result = day1.SolvePart1(string(input))
+		solution = Solution {
+			Part1: day1.SolvePart1(string(input)),
+			Part2: day1.SolvePart2(string(input)),
+		}
 		
 	// Add cases for other days as needed
 	default:
 		log.Fatalf("Solution for day %d not implemented.", day)
 	}
 	
-	fmt.Printf("Day %d Solution: %v\n", day, result)
+	fmt.Printf("Day %d Solution: %v\n", day, solution)
+}
+
+type Solution struct {
+	Part1 int
+	Part2 int
 }

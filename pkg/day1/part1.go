@@ -1,15 +1,16 @@
 package day1
 
 import (
+	"fmt"
 	"log"
 	"strconv"
 	"strings"
 )
 
-func SolvePart1(input string) int {
+func SolvePart1(input string) string {
 	elveList := strings.Split(input, "\n\n")
 	max := 0
-	
+
 	for _, calorieList := range elveList {
 		totalCalories := 0
 		for _, calories := range strings.Split(calorieList, "\n") {
@@ -23,6 +24,6 @@ func SolvePart1(input string) int {
 			max = totalCalories
 		}
 	}
-	
-	return max;
+
+	return fmt.Sprint(max)
 }

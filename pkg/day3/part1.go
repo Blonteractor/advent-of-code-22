@@ -1,10 +1,11 @@
 package day3
 
 import (
+	"fmt"
 	"strings"
 )
 
-func SolvePart1(input string) int {
+func SolvePart1(input string) string {
 	ruckSacks := strings.Split(input, "\n")
 	prioritySum := 0
 
@@ -21,5 +22,5 @@ func SolvePart1(input string) int {
 		prioritySum += ruckSum
 	}
 
-	return prioritySum
+	return fmt.Sprint(prioritySum)
 }

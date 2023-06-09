@@ -1,15 +1,16 @@
 package day1
 
 import (
+	"fmt"
 	"log"
 	"strconv"
 	"strings"
 )
 
-func SolvePart2(input string) int {
+func SolvePart2(input string) string {
 	elveList := strings.Split(input, "\n\n")
 	first, second, third := 0, 0, 0
-	
+
 	for _, calorieList := range elveList {
 		totalCalories := 0
 		for _, calories := range strings.Split(calorieList, "\n") {
@@ -19,19 +20,19 @@ func SolvePart2(input string) int {
 			}
 			totalCalories += c
 		}
-		
+
 		// Push every rank up according to case
 		if totalCalories > first {
 			third = second
 			second = first
 			first = totalCalories
-		} else if (totalCalories > second && totalCalories != first) {
-			third = second 
+		} else if totalCalories > second && totalCalories != first {
+			third = second
 			second = totalCalories
-		} else if (totalCalories > third && totalCalories != second) {
+		} else if totalCalories > third && totalCalories != second {
 			third = totalCalories
 		}
 	}
-	
-	return first + second + third;
+
+	return fmt.Sprint(first + second + third)
 }

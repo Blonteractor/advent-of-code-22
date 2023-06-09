@@ -1,10 +1,11 @@
 package day4
 
 import (
+	"fmt"
 	"strings"
 )
 
-func SolvePart1(input string) int {
+func SolvePart1(input string) string {
 	result := 0
 	for _, v := range strings.Split(input, "\n") {
 		assignementPair := strings.Split(v, ",")
@@ -17,5 +18,5 @@ func SolvePart1(input string) int {
 		}
 	}
 
-	return result
+	return fmt.Sprint(result)
 }

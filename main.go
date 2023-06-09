@@ -11,6 +11,7 @@ import (
 	"github.com/Bonteractor/advent-of-code-22/pkg/day2"
 	"github.com/Bonteractor/advent-of-code-22/pkg/day3"
 	"github.com/Bonteractor/advent-of-code-22/pkg/day4"
+	"github.com/Bonteractor/advent-of-code-22/pkg/day5"
 )
 
 func main() {
@@ -44,6 +45,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+
 	var solution Solution
 
 	// Call the appropriate solution function based on the day
@@ -70,6 +72,12 @@ func main() {
 			Part2: day4.SolvePart2(string(input)),
 		}
 
+	case 5:
+		solution = Solution{
+			Part1: day5.SolvePart1(string(input)),
+			Part2: day5.SolvePart2(string(input)),
+		}
+
 	// Add cases for other days as needed
 	default:
 		log.Fatalf("Solution for day %d not implemented.", day)
@@ -79,6 +87,6 @@ func main() {
 }
 
 type Solution struct {
-	Part1 int
-	Part2 int
+	Part1 string
+	Part2 string
 }

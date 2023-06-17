@@ -18,7 +18,59 @@ import (
 	"github.com/Bonteractor/advent-of-code-22/pkg/day9"
 )
 
+type PartSolver func(string) string
+type Solver struct {
+	part1 PartSolver
+	part2 PartSolver
+}
+
+func (s Solver) getSolution(input string) Solution {
+	return Solution{
+		Part1: s.part1(input),
+		Part2: s.part2(input),
+	}
+}
+
 func main() {
+	solutions := []Solver{
+		{
+			part1: day1.SolvePart1,
+			part2: day1.SolvePart2,
+		},
+		{
+			part1: day2.SolvePart1,
+			part2: day2.SolvePart2,
+		},
+		{
+			part1: day3.SolvePart1,
+			part2: day3.SolvePart2,
+		},
+		{
+			part1: day4.SolvePart1,
+			part2: day4.SolvePart2,
+		},
+		{
+			part1: day5.SolvePart1,
+			part2: day5.SolvePart2,
+		},
+		{
+			part1: day6.SolvePart1,
+			part2: day6.SolvePart2,
+		},
+		{
+			part1: day7.SolvePart1,
+			part2: day7.SolvePart2,
+		},
+		{
+			part1: day8.SolvePart1,
+			part2: day8.SolvePart2,
+		},
+		{
+			part1: day9.SolvePart1,
+			part2: day9.SolvePart2,
+		},
+	}
+
 	dir, err := os.Getwd()
 	if err != nil {
 		log.Fatal(err)
@@ -50,66 +102,11 @@ func main() {
 		log.Fatal(err)
 	}
 
-	var solution Solution
-
-	// Call the appropriate solution function based on the day
-	switch day {
-	case 1:
-		solution = Solution{
-			Part1: day1.SolvePart1(string(input)),
-			Part2: day1.SolvePart2(string(input)),
-		}
-	case 2:
-		solution = Solution{
-			Part1: day2.SolvePart1(string(input)),
-			Part2: day2.SolvePart2(string(input)),
-		}
-	case 3:
-		solution = Solution{
-			Part1: day3.SolvePart1(string(input)),
-			Part2: day3.SolvePart2(string(input)),
-		}
-
-	case 4:
-		solution = Solution{
-			Part1: day4.SolvePart1(string(input)),
-			Part2: day4.SolvePart2(string(input)),
-		}
-
-	case 5:
-		solution = Solution{
-			Part1: day5.SolvePart1(string(input)),
-			Part2: day5.SolvePart2(string(input)),
-		}
-
-	case 6:
-		solution = Solution{
-			Part1: day6.SolvePart1(string(input)),
-			Part2: day6.SolvePart2(string(input)),
-		}
-
-	case 7:
-		solution = Solution{
-			Part1: day7.SolvePart1(string(input)),
-			Part2: day7.SolvePart2(string(input)),
-		}
-
-	case 8:
-		solution = Solution{
-			Part1: day8.SolvePart1(string(input)),
-			Part2: day8.SolvePart2(string(input)),
-		}
-
-	case 9:
-		solution = Solution{
-			Part1: day9.SolvePart1(string(input)),
-			Part2: day9.SolvePart2(string(input)),
-		}
-
-	// Add cases for other days as needed
-	default:
+	if day > len(solutions) {
 		log.Fatalf("Solution for day %d not implemented.", day)
 	}
+
+	solution := solutions[day-1].getSolution(string(input))
 
 	fmt.Printf("Day %d Solution: %v\n", day, solution)
 }

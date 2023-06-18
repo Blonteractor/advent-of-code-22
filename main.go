@@ -9,6 +9,7 @@ import (
 
 	"github.com/Bonteractor/advent-of-code-22/pkg/day1"
 	"github.com/Bonteractor/advent-of-code-22/pkg/day10"
+	"github.com/Bonteractor/advent-of-code-22/pkg/day11"
 	"github.com/Bonteractor/advent-of-code-22/pkg/day2"
 	"github.com/Bonteractor/advent-of-code-22/pkg/day3"
 	"github.com/Bonteractor/advent-of-code-22/pkg/day4"
@@ -73,6 +74,10 @@ func main() {
 		{
 			part1: day10.SolvePart1,
 			part2: day10.SolvePart2,
+		},
+		{
+			part1: day11.SolvePart1,
+			part2: day11.SolvePart2,
 		},
 	}
 

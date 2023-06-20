@@ -3,6 +3,8 @@ package day3
 import (
 	"fmt"
 	"strings"
+
+	"github.com/Bonteractor/advent-of-code-22/pkg/util"
 )
 
 func SolvePart1(input string) string {
@@ -13,10 +15,10 @@ func SolvePart1(input string) string {
 		ruckSum := 0
 		stackLen := len(ruckSack)
 
-		firstCompartment := SetFromString(ruckSack[0 : stackLen/2])
-		secondCompartment := SetFromString(ruckSack[stackLen/2 : stackLen])
+		firstCompartment := util.SetFromString(ruckSack[0 : stackLen/2])
+		secondCompartment := util.SetFromString(ruckSack[stackLen/2 : stackLen])
 
-		for item := range firstCompartment.Intersection(secondCompartment) {
+		for item := range intersection(firstCompartment, secondCompartment) {
 			ruckSum += CalcPriority(item)
 		}
 		prioritySum += ruckSum

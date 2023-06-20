@@ -3,6 +3,8 @@ package day3
 import (
 	"fmt"
 	"strings"
+
+	"github.com/Bonteractor/advent-of-code-22/pkg/util"
 )
 
 func SolvePart2(input string) string {
@@ -10,10 +12,9 @@ func SolvePart2(input string) string {
 	prioritySum := 0
 
 	for i := 0; i < len(ruckSacks); i = i + 3 {
-		first := SetFromString(ruckSacks[i])
+		first := util.SetFromString(ruckSacks[i])
 
-		intersection := first.Intersection(SetFromString(ruckSacks[i+1]))
-		badge := intersection.Intersection(SetFromString(ruckSacks[i+2]))
+		badge := intersection(intersection(first, util.SetFromString(ruckSacks[i+1])), util.SetFromString(ruckSacks[i+2]))
 
 		for item := range badge {
 			prioritySum += CalcPriority(item)

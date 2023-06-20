@@ -3,6 +3,8 @@ package day12
 import (
 	"container/heap"
 	"math"
+
+	"github.com/Bonteractor/advent-of-code-22/pkg/util"
 )
 
 type Location struct {
@@ -109,17 +111,6 @@ func (pq *PriorityQueue) Pop() any {
 	return item
 }
 
-type Set map[*Node]struct{}
-
-func (s *Set) Add(item *Node) bool {
-	_, exists := (*s)[item]
-	if exists {
-		return false
-	}
-	(*s)[item] = struct{}{}
-	return true
-}
-
 func aStar(start *Node, end *Node, grid [][]*Node) float64 {
 	openSet := PriorityQueue{start}
 	heap.Init(&openSet)
@@ -127,7 +118,7 @@ func aStar(start *Node, end *Node, grid [][]*Node) float64 {
 	start.gScore = 0
 	start.hScore = start.heuristic(*end)
 
-	visited := make(Set)
+	visited := make(util.HashSet[*Node])
 	visited.Add(start)
 
 	for openSet.Len() != 0 {
@@ -143,7 +134,7 @@ func aStar(start *Node, end *Node, grid [][]*Node) float64 {
 			if tentative_gScore < neighbor.gScore {
 				neighbor.gScore = tentative_gScore
 				neighbor.hScore = neighbor.heuristic(*end)
-	
+
 				// Add neighbor in open list if its not visited
 				if visited.Add(neighbor) {
 					heap.Push(&openSet, neighbor)

@@ -1,35 +1,23 @@
 package day3
 
+import "github.com/Bonteractor/advent-of-code-22/pkg/util"
+
 const (
 	asciiUpperCaseStart = 65
 	asciiLowerCaseStart = 97
 )
 
-type Set map[rune]struct{}
-
-func (s *Set) Add(item rune) {
-	(*s)[item] = struct{}{}
-}
-
-func SetFromString(input string) Set {
-	set := make(Set)
-	for _, v := range input {
-		set.Add(v)
-	}
-	return set
-}
-
-func (s *Set) Intersection(other Set) Set {
-	intersection := make(Set)
-	if len(*s) >= len(other) {
+func intersection(s util.HashSet[rune], other util.HashSet[rune]) util.HashSet[rune] {
+	intersection := make(util.HashSet[rune])
+	if len(s) >= len(other) {
 		for item := range other {
-			if _, contains := (*s)[item]; contains {
+			if s.Contains(item) {
 				intersection.Add(item)
 			}
 		}
 	} else {
-		for item := range *s {
-			if _, contains := other[item]; contains {
+		for item := range s {
+			if s.Contains(item) {
 				intersection.Add(item)
 			}
 		}
